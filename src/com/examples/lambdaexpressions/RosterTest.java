@@ -227,7 +227,20 @@ public class RosterTest {
 
         System.out.println();
 
+        // Approach 9: Use Bulk Data Operation That Accept Lamba Expressions
+        // as parameters
         
+        System.out.println("Persons who are eligible for Selective Service " + 
+                "(with bulk data operations): ");
+        
+        roster
+            .stream()
+            .filter(
+                p -> p.getGender() == Person.Sex.MALE
+                    && p.getAge() >= 18
+                    && p.getAge() <= 25)
+            .map(p -> p.getEmailAddress())
+            .forEach(email -> System.out.println(email));
     }
     
 }
